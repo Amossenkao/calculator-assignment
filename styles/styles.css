@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;700&display=swap');
+
 * {
 	padding: 0;
 	margin: 0;
@@ -8,12 +10,11 @@
 body {
 	font-size: 1rem;
 	font-family: 'League Spartan', sans-serif;
-	font-weight: normal;
-	background-color: hsl(222deg, 26%, 31%);
+	font-weight: 700;
 }
 
 .root {
-	background-color: hsl(222deg, 26%, 31%);
+	background-color: #fff;
 	min-height: 100vh;
 	display: flex;
 	justify-content: center;
@@ -21,7 +22,7 @@ body {
 }
 
 .text-white {
-	color: #fff;
+	color: hsl(60, 10%, 19%);
 }
 
 .container {
@@ -41,10 +42,10 @@ body {
 .input-field input {
 	width: 100%;
 	height: 100%;
-	background-color: hsl(224deg, 36%, 15%);
+	background-color: rgb(230, 230, 230);
 	border: none;
 	border-radius: 8px;
-	color: #fff;
+	color: hsl(60, 10%, 19%);
 	font-size: 2rem;
 	font-weight: 700;
 	padding-right: 1rem;
@@ -56,7 +57,7 @@ body {
 	content: '';
 	height: 0;
 	width: 2px;
-	background-color: #fff;
+	background-color: hsl(60, 10%, 19%);
 	position: absolute;
 	right: 10px;
 	top: 50%;
@@ -86,7 +87,7 @@ body {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
 	gap: 1.25rem;
-	background-color: hsl(223deg, 31%, 20%);
+	background-color: hsl(0, 5%, 81%);
 	padding: 1.5rem;
 	border-radius: 10px;
 }
@@ -141,6 +142,3 @@ body {
 		font-size: 5vw;
 	}
 }
-/*# sourceMappingURL=styles.css.map */
-
-/*# sourceMappingURL=styles.css.map */

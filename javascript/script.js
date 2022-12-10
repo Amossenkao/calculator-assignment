@@ -27,8 +27,7 @@ function processInput(button, key = null) {
 			return;
 		}
 		if (operators.includes(char)) {
-			re.test(inputScreen.value) &&
-				calculate(inputScreen.value, inputScreen);
+			re.test(inputScreen.value) && calculate(inputScreen.value, inputScreen);
 			/\.\+/g.test(inputScreen.value + '+') && (inputScreen.value += '0');
 		} else if (char === dot) {
 			if (
@@ -37,8 +36,7 @@ function processInput(button, key = null) {
 			) {
 				//Automatically add a leading zero at the start of a decimal number if the screen is empty and the user enters the decimal point
 				inputScreen.value += '0';
-			} else if (/(\d+\.){2,}|\.\./g.test(inputScreen.value + dot))
-				return; // Prevents the user from entering more than one decimal points in a single number
+			} else if (/(\d*\.){2}/g.test(inputScreen.value + dot)) return; // Prevents the user from entering more than one decimal points in a single number
 		}
 		inputScreen.value += char;
 	} else if (button === deleteButton || char === 'Backspace') {
@@ -119,9 +117,7 @@ function formatNumber(numberString) {
 	let decimalPlaces = numberString.split('.')[1]?.length;
 	let formattedNumber =
 		decimalPlaces >= 1
-			? Number(numberString).toFixed(
-					decimalPlaces <= 5 ? decimalPlaces : 5
-			  )
+			? Number(numberString).toFixed(decimalPlaces <= 5 ? decimalPlaces : 5)
 			: Number(numberString);
 
 	//Inserts the number separator in the whole number part if needed
@@ -130,9 +126,7 @@ function formatNumber(numberString) {
 		let decimal = number.split('.')[1];
 
 		return decimal
-			? wholeNumber
-					.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-					.concat('.' + decimal)
+			? wholeNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ',').concat('.' + decimal)
 			: wholeNumber.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 	}
 	return addSeparator(`${formattedNumber}`);
