@@ -18,7 +18,7 @@ document.addEventListener('keydown', (evt) => processInput(null, evt.key));
 
 //TODO: Create a handler function that processes the user input and shows what is being typed into the output screen
 function processInput(button, key = null) {
-	let re = /[\d.]+[-+/*][\d.]+/g; // Checks if the user input is in the appropiate format : (num1 operator num2)
+	let re = /[\d.]+[-+/*]+[\d.]+/g; // Checks if the user input is in the appropiate format : (num1 operator num2)
 	let char = key ? key : button.firstElementChild.textContent;
 	if ([...operators, ...digits, dot].includes(char)) {
 		if (isInvalid) {
@@ -28,12 +28,10 @@ function processInput(button, key = null) {
 		}
 		if (operators.includes(char)) {
 			re.test(inputScreen.value) && calculate(inputScreen.value, inputScreen);
+			if (isInvalid) return;
 			/\.\+/g.test(inputScreen.value + '+') && (inputScreen.value += '0');
 		} else if (char === dot) {
-			if (
-				inputScreen.value === '' ||
-				/[-+*/]\./g.test(inputScreen.value + dot)
-			) {
+			if (/^\.|[-+*/]\./g.test(inputScreen.value + dot)) {
 				//Automatically add a leading zero at the start of a decimal number if the screen is empty and the user enters the decimal point
 				inputScreen.value += '0';
 			} else if (/(\d*\.){2}/g.test(inputScreen.value + dot)) return; // Prevents the user from entering more than one decimal points in a single number
